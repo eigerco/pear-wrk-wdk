@@ -1,5 +1,3 @@
 {
-  "http": "bare-http1",
-  "node:crypto": "bare-crypto",
-        "url": "bare-url"
+  "http": "bare-http1"
 }
