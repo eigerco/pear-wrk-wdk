@@ -106,7 +106,7 @@ class WdkManager {
      *                                             all blockchains, or an object mapping each blockchain to a different seed phrase.
      * @param {WdkConfig} config - The configuration for each blockchain.
      */
-  constructor(seed, config) {
+  constructor (seed, config) {
     /** @private */
     this._seed = seed
 
@@ -129,7 +129,7 @@ class WdkManager {
      * @param {string} seed - The seed phrase.
      * @returns {boolean} True if the seed phrase is valid.
      */
-  static isValidSeedPhrase(seed) {
+  static isValidSeedPhrase (seed) {
     // eslint-disable-next-line no-undef
     return bip39.validateMnemonic(seed)
   }
@@ -144,7 +144,7 @@ class WdkManager {
      * @param {number} [index] - The index of the account to get (default: 0).
      * @returns {Promise<IWalletAccount>} The account.
      */
-  async getAccount(blockchain, index = 0) {
+  async getAccount (blockchain, index = 0) {
     const wallet = await this._getWalletManager(blockchain)
 
     return await wallet.getAccount(index)
@@ -162,7 +162,7 @@ class WdkManager {
      * @param {number} [index] - The index of the account to get (default: 0).
      * @returns {Promise<IWalletAccount>} The account.
      */
-  async getAbstractedAccount(blockchain, index = 0) {
+  async getAbstractedAccount (blockchain, index = 0) {
     const wallet = await this._getWalletManagerWithAccountAbstraction(blockchain)
 
     return await wallet.getAccount(index)
@@ -178,7 +178,7 @@ class WdkManager {
      * @param {string} path - The derivation path (e.g. "0'/0/0").
      * @returns {Promise<IWalletAccount>} The account.
      */
-  async getAccountByPath(blockchain, path) {
+  async getAccountByPath (blockchain, path) {
     const wallet = await this._getWalletManager(blockchain)
 
     return await wallet.getAccountByPath(path)
@@ -196,7 +196,7 @@ class WdkManager {
      * @param {string} path - The derivation path (e.g. "0'/0/0").
      * @returns {Promise<IWalletAccount>} The account.
      */
-  async getAbstractedAccountByPath(blockchain, path) {
+  async getAbstractedAccountByPath (blockchain, path) {
     const wallet = await this._getWalletManagerWithAccountAbstraction(blockchain)
 
     return await wallet.getAccountByPath(path)
@@ -208,7 +208,7 @@ class WdkManager {
      * @param {Blockchain} blockchain - A blockchain identifier (e.g., "ethereum").
      * @returns {Promise<FeeRates>} The fee rates.
      */
-  async getFeeRates(blockchain) {
+  async getFeeRates (blockchain) {
     const wallet = await this._getWalletManager(blockchain)
 
     return await wallet.getFeeRates()
@@ -225,7 +225,7 @@ class WdkManager {
      * // Get the abstracted address of the ethereum wallet's account at m/44'/60'/0'/0/3
      * const abstractedAddress = await wdk.getAbstractedAddress("ethereum", 3);
      */
-  async getAddress(blockchain, accountIndex) {
+  async getAddress (blockchain, accountIndex) {
     const account = await this.getAccount(blockchain, accountIndex)
 
     return await account.getAddress()
@@ -238,7 +238,7 @@ class WdkManager {
      * @param {number} accountIndex - The index of the account to use (see [BIP-44](https://en.bitcoin.it/wiki/BIP_0044)).
      * @returns {Promise<number>} The native token balance (in base unit).
      */
-  async getAddressBalance(blockchain, accountIndex) {
+  async getAddressBalance (blockchain, accountIndex) {
     const account = await this.getAccount(blockchain, accountIndex)
 
     return await account.getBalance()
@@ -261,7 +261,7 @@ class WdkManager {
      *
      * console.log("Transaction hash:", transfer.hash);
      */
-  async quoteSendTransaction(blockchain, accountIndex, options) {
+  async quoteSendTransaction (blockchain, accountIndex, options) {
     const account = await this.getAccount(blockchain, accountIndex)
 
     return await account.quoteSendTransaction(options)
@@ -284,7 +284,7 @@ class WdkManager {
      *
      * console.log("Transaction hash:", transfer.hash);
      */
-  async sendTransaction(blockchain, accountIndex, options) {
+  async sendTransaction (blockchain, accountIndex, options) {
     const account = await this.getAccount(blockchain, accountIndex)
 
     return await account.sendTransaction(options)
@@ -301,7 +301,7 @@ class WdkManager {
      * // Get the abstracted address of the ethereum wallet's account at m/44'/60'/0'/0/3
      * const abstractedAddress = await wdk.getAbstractedAddress("ethereum", 3);
      */
-  async getAbstractedAddress(blockchain, accountIndex) {
+  async getAbstractedAddress (blockchain, accountIndex) {
     const account = await this.getAbstractedAccount(blockchain, accountIndex)
 
     return await account.getAddress()
@@ -314,7 +314,7 @@ class WdkManager {
      * @param {number} accountIndex - The index of the account to use (see [BIP-44](https://en.bitcoin.it/wiki/BIP_0044)).
      * @returns {Promise<number>} The native token balance (in base unit).
      */
-  async getAbstractedAddressBalance(blockchain, accountIndex) {
+  async getAbstractedAddressBalance (blockchain, accountIndex) {
     const account = await this.getAbstractedAccount(blockchain, accountIndex)
 
     return await account.getBalance()
@@ -328,7 +328,7 @@ class WdkManager {
      * @param {string} tokenAddress - The smart contract address of the token
      * @returns {Promise<number>} The token balance (in base unit).
      */
-  async getAbstractedAddressTokenBalance(blockchain, accountIndex, tokenAddress) {
+  async getAbstractedAddressTokenBalance (blockchain, accountIndex, tokenAddress) {
     const account = await this.getAbstractedAccount(blockchain, accountIndex)
 
     return await account.getTokenBalance(tokenAddress)
@@ -341,7 +341,7 @@ class WdkManager {
      * @param {number} accountIndex - The index of the account to use (see [BIP-44](https://en.bitcoin.it/wiki/BIP_0044)).
      * @returns {Promise<number>} The paymaster token balance (in base unit).
      */
-  async getAbstractedAddressPaymasterTokenBalance(blockchain, accountIndex) {
+  async getAbstractedAddressPaymasterTokenBalance (blockchain, accountIndex) {
     const account = await this.getAbstractedAccount(blockchain, accountIndex)
 
     const { paymasterToken: { address } } = this._config[blockchain]
@@ -368,7 +368,7 @@ class WdkManager {
      *
      * console.log("Transaction hash:", transfer.hash);
      */
-  async abstractedAccountTransfer(blockchain, accountIndex, options, config) {
+  async abstractedAccountTransfer (blockchain, accountIndex, options, config) {
     const account = await this.getAbstractedAccount(blockchain, accountIndex)
 
     return await account.transfer(options, config)
@@ -384,7 +384,7 @@ class WdkManager {
      * @returns {Promise<TransactionResult>} The transfer's result.
      *
      */
-  async abstractedSendTransaction(blockchain, accountIndex, options, config) {
+  async abstractedSendTransaction (blockchain, accountIndex, options, config) {
     const account = await this.getAbstractedAccount(blockchain, accountIndex)
 
     return await account.sendTransaction(options, config)
@@ -410,7 +410,7 @@ class WdkManager {
      *
      * console.log("Gas cost in paymaster token:", quote.fee);
      */
-  async abstractedAccountQuoteTransfer(blockchain, accountIndex, options, config) {
+  async abstractedAccountQuoteTransfer (blockchain, accountIndex, options, config) {
     const account = await this.getAbstractedAccount(blockchain, accountIndex)
     return await account.quoteTransfer(options)
   }
@@ -423,7 +423,7 @@ class WdkManager {
      * @param {string} hash - Transaction hash.
      * @return {Promise<unknown | null>} - The receipt, or null if the transaction has not been included in a block yet.
      */
-  async getTransactionReceipt(blockchain, accountIndex, hash) {
+  async getTransactionReceipt (blockchain, accountIndex, hash) {
     const account = await this.getAbstractedAccount(blockchain, accountIndex)
     return await account.getTransactionReceipt(hash)
   }
@@ -434,7 +434,7 @@ class WdkManager {
      * @param {ApproveOptions} options - The approve options.
      * @returns {Promise<EvmTransaction>} The evm transaction.
      */
-  async getApproveTransaction(options) {
+  async getApproveTransaction (options) {
     const { token, recipient, amount } = options
 
     const erc20Abi = ['function approve(address spender, uint256 amount) external returns (bool)']
@@ -449,7 +449,7 @@ class WdkManager {
   }
 
   /** Disposes all the wallet accounts, erasing their private keys from the memory. */
-  dispose() {
+  dispose () {
     for (const blockchain in this._wallets) {
       this._wallets[blockchain].dispose()
     }
@@ -464,7 +464,7 @@ class WdkManager {
   }
 
   /** @private */
-  async _getWalletManager(blockchain) {
+  async _getWalletManager (blockchain) {
     if (!Object.values(Blockchain).includes(blockchain)) {
       throw new Error(`Unsupported blockchain: ${blockchain}.`)
     }
@@ -507,7 +507,7 @@ class WdkManager {
   }
 
   /** @private */
-  async _getWalletManagerWithAccountAbstraction(blockchain) {
+  async _getWalletManagerWithAccountAbstraction (blockchain) {
     if (![...EVM_BLOCKCHAINS, Blockchain.Ton, Blockchain.Tron].includes(blockchain)) {
       throw new Error(`Account abstraction unsupported for blockchain: ${blockchain}.`)
     }
