@@ -2,7 +2,7 @@
 
 Note: This package is published as `@tetherto/pear-wrk-wdk` (folder name: `pear-wrk-wdk`).
 
-A cross-runtime WDK manager and worklet bundle for mobile (iOS/Android) and Node environments. It unifies multi-chain wallet operations (EVM, TON, TRON, BTC, Solana) with optional account abstraction, provides a generated worklet bundle for React Native Bare Kit, and ships an HRPC schema for host↔worklet communication.
+A cross-runtime WDK manager and worklet bundle for mobile (iOS/Android) and Node environments. It unifies multi-chain wallet operations (EVM, TON, TRON, BTC, Solana, Movement) with optional account abstraction, provides a generated worklet bundle for React Native Bare Kit, and ships an HRPC schema for host↔worklet communication.
 
 ### 🔍 About WDK
 
@@ -12,7 +12,7 @@ See docs at `https://docs.wallet.tether.io`.
 
 ### 🌟 Features
 
-- Unified manager API over multiple chains: Ethereum, Arbitrum, Polygon, TON, TRON, Bitcoin, Solana
+- Unified manager API over multiple chains: Ethereum, Arbitrum, Polygon, TON, TRON, Bitcoin, Solana, Movement
 - Account abstraction support (EVM 4337, TON gasless, TRON gasfree)
 - Pluggable per-chain configs; multi-seed or single-seed inputs
 - Fee rates, address management, transfers, token balances, and receipts
@@ -66,7 +66,8 @@ const wdk = new WDK(seed, {
   ton:      { /* TON config */ },
   tron:     { /* TRON config */ },
   bitcoin:  { /* BTC config */ },
-  solana:   { /* Solana config */ }
+  solana:   { /* Solana config */ },
+  movement: { /* Movement config */ }
 })
 ```
 
@@ -80,7 +81,8 @@ const wdk = new WDK({
   ton:      'seed phrase...',
   tron:     'seed phrase...',
   bitcoin:  'seed phrase...',
-  solana:   'seed phrase...'
+  solana:   'seed phrase...',
+  movement: 'seed phrase...'
 }, {/* same config object as above */})
 ```
 
