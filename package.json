@@ -16,7 +16,7 @@
     "@wdk/wallet-btc": "https://github.com/tetherto/wdk-wallet-btc#ed35de0b49344bb07736fc296a28b8465a8e8a6e",
     "@wdk/wallet-evm": "https://github.com/tetherto/wdk-wallet-evm#74e281ea63f7df6e2590580bba988daeda021df6",
     "@wdk/wallet-evm-erc-4337": "https://github.com/tetherto/wdk-wallet-evm-erc-4337#cc4431332b86d9c0609eaf833daa7295c13d8f86",
-    "@wdk/wallet-movement": "github:eigerco/wdk-wallet-movement#b1763e659e4809c74ad1b81c401751a4c5abbb7f",
+    "@wdk/wallet-movement": "github:eigerco/wdk-wallet-movement#bc01c62b85fa180d5c26ea8ad5685647f245a5fd",
     "@wdk/wallet-solana": "https://github.com/tetherto/wdk-wallet-solana#e132dc8247cd7b9e84aeaad6c20667a92830e212",
     "@wdk/wallet-ton": "https://github.com/tetherto/wdk-wallet-ton#e2fc2c913fc003a0ad895822dc452db263faa259",
     "@wdk/wallet-ton-gasless": "https://github.com/tetherto/wdk-wallet-ton-gasless#4b62e81488647158b2492e06c6cde176b69dd17d",
@@ -32,8 +32,8 @@
     "poseidon-lite": "file:./shims/poseidon-lite",
     "poseidon-lite-upstream": "npm:poseidon-lite@^0.3.0",
     "utf-8-validate": "^5.0.10",
-    "@szmarczak/http-timer": "file:./shims/http-timer",
-    "bare-fetch": "^2.5.1"
+    "bare-fetch": "^2.5.1",
+    "@aptos-labs/aptos-client": "file:./shims/aptos-client"
   },
   "devDependencies": {
     "rimraf": "6.0.1",
