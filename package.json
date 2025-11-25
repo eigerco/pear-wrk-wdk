@@ -31,7 +31,8 @@
     "os": "npm:bare-os@3.6.1",
     "poseidon-lite": "file:./shims/poseidon-lite",
     "poseidon-lite-upstream": "npm:poseidon-lite@^0.3.0",
-    "utf-8-validate": "^5.0.10"
+    "utf-8-validate": "^5.0.10",
+    "@szmarczak/http-timer": "file:./shims/http-timer"
   },
   "devDependencies": {
     "rimraf": "6.0.1",
