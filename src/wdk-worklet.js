@@ -1,3 +1,10 @@
+// Polyfill process.versions.node for libraries that expect Node.js
+if (typeof process !== 'undefined' && !process.versions) {
+  process.versions = { node: '20.0.0' }
+} else if (typeof process !== 'undefined' && !process.versions.node) {
+  process.versions.node = '20.0.0'
+}
+
 // eslint-disable-next-line no-undef
 const { IPC } = BareKit
 const HRPC = require('../spec/hrpc')
