@@ -1,3 +1,6 @@
+// Set up global fetch for bare runtime (used by Movement wallet's fetch-based Aptos client)
+require('bare-fetch/global')
+
 // eslint-disable-next-line no-undef
 const { IPC } = BareKit
 const HRPC = require('../spec/hrpc')

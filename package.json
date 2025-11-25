@@ -32,7 +32,8 @@
     "poseidon-lite": "file:./shims/poseidon-lite",
     "poseidon-lite-upstream": "npm:poseidon-lite@^0.3.0",
     "utf-8-validate": "^5.0.10",
-    "@szmarczak/http-timer": "file:./shims/http-timer"
+    "@szmarczak/http-timer": "file:./shims/http-timer",
+    "bare-fetch": "^2.5.1"
   },
   "devDependencies": {
     "rimraf": "6.0.1",
