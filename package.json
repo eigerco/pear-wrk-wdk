@@ -40,6 +40,10 @@
     "standard": "17.1.2",
     "typescript": "5.8.3"
   },
+  "overrides": {
+    "poseidon-lite": "$poseidon-lite",
+    "@aptos-labs/aptos-client": "$@aptos-labs/aptos-client"
+  },
   "author": "Tether",
   "license": "Apache-2.0"
 }
