@@ -1,0 +1,10 @@
+{
+  "name": "@aptos-labs/aptos-client",
+  "version": "0.0.0",
+  "description": "Shim for @aptos-labs/aptos-client using browser implementation for bare runtime",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "aptos-client-upstream": "npm:@aptos-labs/aptos-client@^2.0.0"
+  }
+}

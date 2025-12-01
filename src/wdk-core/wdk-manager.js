@@ -34,6 +34,8 @@
 
 /** @typedef {import('@wdk/wallet-solana').SolanaWalletConfig} SolanaWalletConfig */
 
+/** @typedef {import('@wdk/wallet-movement').MovementWalletConfig} MovementWalletConfig */
+
 /** @typedef {string | Uint8Array} Seed */
 
 /**
@@ -45,6 +47,7 @@
  * @property {Seed} tron - The tron's wallet seed phrase.
  * @property {Seed} bitcoin - The bitcoin's wallet seed phrase.
  * @property {Seed} solana - The solana's wallet seed phrase.
+ * @property {Seed} movement - The movement's wallet seed phrase.
  */
 
 /**
@@ -56,6 +59,7 @@
  * @property {TronWalletConfig | TronGasfreeWalletConfig} tron - The tron blockchain configuration.
  * @property {BtcWalletConfig} bitcoin - The bitcoin blockchain configuration.
  * @property {SolanaWalletConfig} solana - The solana blockchain configuration.
+ * @property {MovementWalletConfig} movement - The movement blockchain configuration.
  */
 
 /**
@@ -84,7 +88,8 @@ const Blockchain = {
   Ton: 'ton',
   Tron: 'tron',
   Bitcoin: 'bitcoin',
-  Solana: 'solana'
+  Solana: 'solana',
+  Movement: 'movement'
 }
 
 const EVM_BLOCKCHAINS = [
@@ -109,13 +114,13 @@ class WdkManager {
     this._config = config
 
     /** @private */
-    this._wallets = { }
+    this._wallets = {}
 
     /** @private */
-    this._account_abstraction_wallets = { }
+    this._account_abstraction_wallets = {}
 
     /** @private */
-    this._imports = { }
+    this._imports = {}
   }
 
   /**
@@ -454,8 +459,8 @@ class WdkManager {
     }
     this._seed = null
     this._config = null
-    this._wallets = { }
-    this._account_abstraction_wallets = { }
+    this._wallets = {}
+    this._account_abstraction_wallets = {}
   }
 
   /** @private */
@@ -491,6 +496,10 @@ class WdkManager {
         const { default: WalletManagerSolana } = await import('@wdk/wallet-solana')
 
         this._wallets.solana = new WalletManagerSolana(seed, config.solana)
+      } else if (blockchain === 'movement') {
+        const { default: WalletManagerMovement } = await import('@wdk/wallet-movement')
+
+        this._wallets.movement = new WalletManagerMovement(seed, config.movement)
       }
     }
 
